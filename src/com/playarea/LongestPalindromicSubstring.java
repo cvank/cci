@@ -44,8 +44,7 @@ public class LongestPalindromicSubstring {
 		int maxLength = Integer.MIN_VALUE;
 		for (char c : charIndex.keySet()) {
 			List<Integer> indices = charIndex.get(c);
-			if (indices.size() <= 1) // Can't possibly form palindrom with one instance of character. The counter
-										// part is needed.
+			if (indices.size() <= 1) // Can't possibly form palindrome with one instance of character. The counter part is needed.
 				continue;
 
 			int index = 0;

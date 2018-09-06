@@ -26,7 +26,7 @@ public class LongestCommonPrefix {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		String[] sArray = { "abc", "abf", "a" };
+		String[] sArray = { "abc", "abf", "jbc" };
 		longestCommonPrefix(sArray);
 
 	}

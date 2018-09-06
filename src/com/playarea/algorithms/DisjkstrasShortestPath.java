@@ -118,7 +118,7 @@ public class DisjkstrasShortestPath {
 
 	}
 
-	private List<Edge> getNeighbors(DirectedWeightedGraph graph, City sourceNode) {
+	public List<Edge> getNeighbors(DirectedWeightedGraph graph, City sourceNode) {
 		return graph.getAdjacentListMap().get(sourceNode);
 	}
 
@@ -274,7 +274,7 @@ public class DisjkstrasShortestPath {
 
 		}
 
-		private MinBinaryHeap<T>.Node extractMinNode() {
+		public MinBinaryHeap<T>.Node extractMinNode() {
 			return nodes.get(0);
 		}
 

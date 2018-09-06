@@ -33,7 +33,7 @@ public class LongestSubStringWithOutRepeatingChars {
 		System.out.println(lengthOfLongestSubstring(s));  
 	}
 
-	private static String longestSubString(String s) {
+	/*private static String longestSubString(String s) {
 		if (s == null || s.trim() == "")
 			return s;
 
@@ -66,12 +66,12 @@ public class LongestSubStringWithOutRepeatingChars {
 
 		return (longestSoFar != null && longestSoFar.length() > builder.length()) ? longestSoFar.toString()
 				: builder.toString();
-	}
+	}*/
 	
 	public static int lengthOfLongestSubstring(String s) {
         int n = s.length(), ans = 0;
         Map<Character, Integer> map = new HashMap<>(); // current index of character
-        // try to extend the range [i, j]
+        // try to extend the range [i, j] //dvadaf
         for (int j = 0, i = 0; j < n; j++) {
             if (map.containsKey(s.charAt(j))) {
                 i = Math.max(map.get(s.charAt(j)), i);

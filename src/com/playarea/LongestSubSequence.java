@@ -47,7 +47,7 @@ public class LongestSubSequence {
 			t[i][0] = 0;
 		}
 		for (int j = 0; j <= s2.length(); j++) {
-			t[0][j++] = 0;
+			t[0][j] = 0;
 		}
 	}
 

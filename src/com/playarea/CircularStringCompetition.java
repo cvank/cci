@@ -3,16 +3,14 @@
  */
 package com.playarea;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author chandrashekharv Circular Substring Competition View Try Insights
- *         Points: 7514 test cases (3 samples) CodingMEDIUMAlgorithmsCore
- *         SkillsTwo PointersStrings Languages: C, Clojure, C++, C++14, C# + 17
- *         more Each year there is a huge contest organized in your town. People
+ * @author chandrashekharv Circular Substring Competition 
+ * 			
+ * 		   Each year there is a huge contest organized in your town. People
  *         there are obsessed by crosswords and other letter and language
  *         related games.
  * 
