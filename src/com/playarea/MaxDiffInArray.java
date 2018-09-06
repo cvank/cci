@@ -123,7 +123,6 @@ public class MaxDiffInArray {
 
 			}
 			previousElement = a[i];
-		
 
 		}
 

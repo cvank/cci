@@ -22,8 +22,8 @@ public class TwoBricksWater {
 	 */
 	public static void main(String[] args) {
 		// prous as 1 and opaque as 0
-		int r = 1;
-		int c = 5;
+		int r = 3;
+		int c = 4;
 		int[][] wall = new int[r][c];
 		Random random = new Random();
 		for (int i = 0; i < r; i++) {
@@ -33,6 +33,7 @@ public class TwoBricksWater {
 			}
 			System.out.println();
 		}
+		apply(wall); // Latest
 		/*
 		 * wall[0] = new int[] { 0, 0, 1 }; wall[1] = new int[] { 0, 0, 1 }; wall[2] =
 		 * new int[] { 1, 1, 1 };
@@ -51,32 +52,69 @@ public class TwoBricksWater {
 				}
 				if (r == 1 && containsPorusBrickOnTopLayer) {
 					System.out.println("WATER FLOWS THROUGH THE WALL");
-				}
-				else if (r == 1 && !containsPorusBrickOnTopLayer) {
+				} else if (r == 1 && !containsPorusBrickOnTopLayer) {
 					System.out.println("WATER DOESN'T FLOWS THROUGH THE WALL");
 					break;
 				}
 
-			if (i > 0) {
-				temp[i][j] = get0OR1(temp, i, j, wall, r, c);
-				if (i == r - 1 && j <= c - 1) {
-					if (temp[i][j] == 1) {
-						System.out.println("WATER FLOWS THROUGH THE WALL");
-						break;
+				if (i > 0) {
+					temp[i][j] = get0OR1(temp, i, j, wall, r, c);
+					if (i == r - 1 && j <= c - 1) {
+						if (temp[i][j] == 1) {
+							System.out.println("WATER FLOWS THROUGH THE WALL");
+							break;
+						}
 					}
 				}
 			}
 		}
-	}System.out.println("------TEMP ARRAY-------");for(
+		System.out.println("------TEMP ARRAY-------");
 
-	int i = 0;i<r;i++)
-	{
-		for (int j = 0; j < c; j++) {
+		for (int i = 0; i < r; i++) {
+			for (int j = 0; j < c; j++) {
 
-			System.out.print(temp[i][j] + " ");
+				System.out.print(temp[i][j] + " ");
+			}
+			System.out.println();
 		}
-		System.out.println();
 	}
+
+	private static void apply(int[][] wall) {
+
+		// Take temp array with [row+1][col+1]
+		int t[][] = new int[wall.length + 1][wall[0].length + 1];
+		for (int i = 0; i < t[0].length; i++) {
+			t[0][i] = 1; // all row 1 values are 1
+		}
+		for (int i = 0; i < t.length; i++) {
+			t[i][0] = 1; // All col one values are 1
+		}
+		
+		for (int i = 1; i < t.length; i++) {
+			for (int j = 1; j < t[0].length; j++) {
+				if (wall[i - 1][j - 1] == 0) // if opaque put 0 and continue;
+					t[i][j] = 0;
+				else { // if porus
+					if ((i - 1 >= 0 && j - 1 >= 0 && t[i - 1][j - 1] == 1) || // diagonal value is porus
+						(i - 1 >= 0 && t[i - 1][j] == 1) || // right above row brick
+						(j - 1 >= 0 && t[i][j - 1] == 1) || // horizontal left brick
+						(j + 1 < t[0].length && i - 1 >= 0 && t[i - 1][j + 1] == 1)) // right diagonal brick
+						t[i][j] = 1;
+				}
+			}
+
+		}
+
+		boolean flows = false;
+		for (int i = t.length - 1, j = 1; j < t[0].length; j++) {
+			if (t[i][j] == 1) {
+				flows = true;
+				break;
+			}
+		}
+		if (flows)
+			System.out.println("Water flows... HURRAY!!!");
+
 	}
 
 	private static int get0OR1(int[][] temp, int currentRow, int currentColumn, int[][] wall, int r, int c) {

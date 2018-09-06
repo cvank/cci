@@ -31,6 +31,7 @@ public class MergeSortedLinkedLists {
 			System.out.println(currentNode.value);
 			currentNode = currentNode.next;
 		}
+		
 	}
 
 	private static ListNode merge(ListNode[] lists) {
@@ -42,7 +43,7 @@ public class MergeSortedLinkedLists {
 		if (lists.length == 1)
 			return list0;
 		if (lists.length == 2) {
-			return mergeTwoLists(lists[0], lists[1]);
+			return mergeTwoListsNonRecursive(lists[0], lists[1]);
 		}
 
 		int amount = lists.length;
@@ -88,15 +89,17 @@ public class MergeSortedLinkedLists {
 			listNode2 = listNode1;
 			listNode1 = head;
 		}
-		while (listNode1.next != null) {
-			if (listNode1.next.value > listNode2.value) {
+		while(listNode1.next != null) {
+			if(listNode1.next.value > listNode2.value) {
 				ListNode temp = listNode1.next;
 				listNode1.next = listNode2;
 				listNode2 = temp;
+				
 			}
 			listNode1 = listNode1.next;
 		}
 		listNode1.next = listNode2;
+		
 
 		return head;
 	}
